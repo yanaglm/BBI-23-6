@@ -7,451 +7,401 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            {
-                //lab1
-                //level1
-                //1
-                int s = 0;
-                int i = 3;
-                for (i = 2; i < 36; i += 3)
-                {
-                    s = s + i;
-                }
-                Console.WriteLine(s);
-            }
+            //1
+            //int s = 0;
+            //int i = 3;
+            //for (i = 2; i < 36; i += 3)
+            //{
+            //    s = s + i;
+            //}
+            //Console.WriteLine(s);
+
 
             //2
-            {
-                int k = 1;
-                int j = 1;
-                for (j = 1; j < 10; j++)
-                {
-                    k = k + (1 / j);
-                }
-                Console.WriteLine(k);
-            }
-
-            //11a
-            {
-                int s = 1;
-                while (s < 7)
-                {
-                    Console.Write(s);
-                    s++;
-                }
-
-
-            }
-            //11b
-            {
-                int s = 5;
-                int i = 0;
-                for (i = 0; i < 6; i++)
-                {
-                    Console.Write(s);
-                }
-
-
-            }
-
-
-
-            //7
-            {
-                int f = 1;
-                if (f != 0)
-                {
-                    for (int i = 1; i <= 6; i++)
-                    {
-                        f *= i;
-                    }
-                    Console.WriteLine(f);
-                }
-            }
-
-
-            //12
-            {
-                int s = 1;
-                int x = 2;
-                int i = 1;
-                for (i = 1; i < 11; i++)
-                {
-                    double k = 1 / Math.Pow(x, i);
-                    int r;
-                    r = (int)k;
-                    s = s + r;
-                }
-
-                Console.WriteLine("x = 2");
-                Console.WriteLine(s);
-            }
-
-            //level2
-            //2 
-            {
-                int p = 1;
-                int k = 1;
-                int n = 4;
-                for (int i = n; i > 0; i += 3)
-                {
-                    k = p * i;
-                    if (k < 30000)
-                    {
-                        p = p * i;
-                    }
-                    else
-                    {
-                        n = i - 3;
-                        break;
-                    }
-                }
-                Console.WriteLine(n);
-            }
-
-
-            //3
-            {
-
-                int n = 0;
-                int s = 0;
-                int g;
-                const int p = 18;
-                const int a = 1;
-                const int h = 2;
-                while (s < p)
-                {
-                    g = a + (n * h);
-                    s += g;
-                    n += 1;
-                }
-                n -= 1;
-                Console.WriteLine(n);
-
-
-                //5
-            {
-                int n = Int32.Parse(Console.ReadLine());
-                int m = Int32.Parse(Console.ReadLine());
-                int k = 0;
-                while (n >= m)
-                {
-                        n -= m;
-                        k++;
-                }
-                Console.WriteLine($"результат: {k}");
-                Console.WriteLine($"остаток: {n}");
-            }
-
-                //7a
-
-                {
-                    double s = 10.0;
-                    double s1 = 10.0;
-                    for (int i = 2; i < 8; i++)
-                    {
-                        s = s * 1.1;
-                        s1 = s1 + s;
-                    }
-                    Console.WriteLine($"a) {s1}");
-                }
-
-
-
-                //7b
-
-                {
-                    double s = 10.0;
-                    double s1 = 10.0;
-                    double sum = 0;
-                    int k = 0;
-                    for (int i = 2; i < 10; i++)
-                    {
-                        s = s * 1.1;
-                        s1 = s1 + s;
-                        k++;
-                        if (s1 >= 100)
-                        {
-                            Console.WriteLine(k);
-                            break;
-
-                        }
-                    }
-
-                }
-                //7c
-                {
-                    double s = 10.0;
-                    double s1 = 10.0;
-                    double sum = 0;
-                    int k = 0;
-                    for (int i = 2; i < 10; i++)
-                    {
-                        s = s * 1.1;
-                        s1 = s1 + s;
-                        k++;
-                        if (s >= 20)
-                        {
-                            Console.WriteLine(k);
-                            break;
-
-                        }
-                    }
-                }
-                using System.Reflection.Emit;
-
-//lab 2 
-//level 1 task 1
-        int r = 2;
-        double x = 0;
-        double y = 2;
-        if (Math.Abs(Math.Pow(x, 2) + Math.Pow(y, 2) - Math.Pow(r, 2)) <= Math.Pow(10, -3))
-        {
-            Console.WriteLine("in");
-        }
-        else
-        {
-            Console.WriteLine("not in");
-        }
+            //int k = 1;
+            //int j = 1;
+            //for (j = 1; j < 10; j++)
+            //{
+            //    k = k + (1 / j);
+            //}
+            //Console.WriteLine(k);
     
-
-
-//3
-        int a = Int32.Parse(Console.ReadLine());
-        int b = Int32.Parse(Console.ReadLine());
-        int c;
-        if (a > 0)
-        {
-            c = Math.Max(a, b);
-        }
-        else
-        {
-            c = Math.Min(a, b);
-        }
-        Console.WriteLine($"c = {c}");
-
-
-
-
-//4
-        int a = Int32.Parse(Console.ReadLine());
-        int b = Int32.Parse(Console.ReadLine());
-        int c = Int32.Parse(Console.ReadLine());
-        int z;
-        int k;
-        k = Math.Min(a, b);
-        z = Math.Max(k, c);
-        Console.WriteLine($"z = {z}");
-
-
-
-//5
-
-        double r = 0.86;
-        double s = 0.74;
-        double st = Math.Sqrt(s);
-        double diag = st * Math.Sqrt(2) / 2;
-        if (diag <= r)
-        {
-            Console.WriteLine("in");
-        }
-        else
-        {
-            Console.WriteLine("not in");
-        }
-
-
-//6
-
-        double r = 6;
-        double s = 9;
-        double st = Math.Sqrt(s);
-        /*    double diag = st * Math.Sqrt(2) / 2; */
-        if (st >= r * 2)
-        {
-            Console.WriteLine("in");
-        }
-        else
-        {
-            Console.WriteLine("not in");
-        }
-
-
-//7
-
-        int x = Int32.Parse(Console.ReadLine());
-        int y;
-        if (Math.Abs(x) > 1)
-        {
-            y = 1;
-        }
-        else
-        {
-            y = Math.Abs(x);
-        }
-        Console.WriteLine($"y = {y}");
-
-
-//8
-
-        double x = Int32.Parse(Console.ReadLine());
-        double y;
-        if (Math.Abs(x) >= 1)
-        {
-            y = 0;
-        }
-        else
-        {
-            y = Math.Pow(x, 2) - 1;
-        }
-        Console.WriteLine($"y = {y}");
-
-
-
-//9
-
-        double x = Int32.Parse(Console.ReadLine());
-        double y;
-        if (x <= -1)
-        {
-            y = 0;
-        }
-        else if (x > 0)
-        {
-            y = 1;
-        }
-        else
-        {
-            y = x + 1;
-        }
-        Console.WriteLine($"y = {y}");
-
-
-//level 2 task 1
-
-        int n = Int32.Parse(Console.ReadLine());
-        double rost = 0;
-        for (int i = 0; i < n; i++)
-        {
-            rost = Double.Parse(Console.ReadLine());
-        }
-        double sr = (double)rost / n;
-        Console.WriteLine(sr);
-
-
-
-//2
-        int n = Int32.Parse(Console.ReadLine());
-        double a = Double.Parse(Console.ReadLine());
-        double b = Double.Parse(Console.ReadLine());
-        double r = Double.Parse(Console.ReadLine());
-        int k = 0;
-        for (int i = 0; i < n; i++)
-        {
-            double x = Double.Parse(Console.ReadLine());
-            double y = Double.Parse(Console.ReadLine());
-            x -= a;
-            y -= b;
-            if (Math.Pow(x, 2) + Math.Pow(y, 2) <= Math.Pow(r, 2))
-            {
-                k++;
-            }
-        }
-        Console.WriteLine($"точек в в круге: {k}");
-
-
-//3
-
-        int n = Int32.Parse(Console.ReadLine());
-        double m = 0;
-        for (int i = 0; i < n; i++)
-        {
-            double ves = Double.Parse(Console.ReadLine());
-            if (ves < 30)
-            {
-                m += 0.2;
-            }
-        }
-        Console.WriteLine(m);
-
-
-//4
-
-        int n = Int32.Parse(Console.ReadLine());
-        double r1 = Double.Parse(Console.ReadLine());
-        double r2 = Double.Parse(Console.ReadLine());
-        int k = 0;
-        for (int i = 0; i < n: i++)
-        {
-            double x = Double.Parse(Console.ReadLine());
-            double y = Double.Parse(Console.ReadLine());
-            if ((Math.Pow(x, 2) + Math.Pow(y, 2) >= Math.Pow(r1, 2)) & (Math.Pow(x, 2) + Math.Pow(y, 2) <= Math.Pow(r2, 2)))
-            {
-                k++;
-            }
-        }
-        Console.WriteLine($"точек попадет: {k}");
-
-
-//5
-
-        int n = 30;
-        int norm = Int32.Parse(Console.ReadLine());
-        int k = 0;
-        for (int i = 0; i <= 30; i++)
-        {
-            double km = Double.Parse(Console.ReadLine());
-            if (km >= norm)
-            {
-                k++;
-            }
-        }
-        Console.WriteLine(k);
-
-
-
-//6
-
-        int n = Int32.Parse(Console.ReadLine());
-        int k = 0;
-        for (iny i = 0; i < n; i++)
-        {
-            double x = Double.Parse(Console.ReadLine());
-            double y = Double.Parse(Console.ReadLine());
-            if (x >= 0 & x <= Math.PI)
-            {
-                if (Math.Sin(x) >= y & y >= 0)
-                {
-                    k++;
-                }
-            }
-        }
-        Console.WritwLine($"{k} точек принадлежат");
-
-
-
-//9
-        int n = Int32.Parse(Console.ReadLine());
-        int best = 0;
-        for (int i = 0; i < n; i++)
-        {
-            int dist = Int32.Parse(Console.ReadLine());
-            best = Math.Max(best, dist);
-        }
-        Console.WriteLine($"best result {best}");
-
-
-
-//8
-
-        int n = Int32.Parse(Console.ReadLine());
-        int k;
-        for (int i = 0; i < n; i++)
-        {
-            int x = Int32.Parse(Console.ReadLine());
-            int y = Int32.Parse(Console.ReadLine());
-            int rast = Math.Abs(Math.Pow(x, 2) + Math.Pow(y, 2));
-            }
+    
+            //3
+            //double s = 0;
+            //for (double i = 2; i < 113; i+=2)
+            //{
+            //    s = s + (i / (i+1));
+            //}
+            //Console.WriteLine(s);
+    
+    
+            //4
+            //int x = 30;
+            //double s = Math.Cos(x);
+            //double a = 1;
+            //for (double i = 1; i < 8; i++)
+            //{
+            //    a = a * i;
+            //    s += Math.Cos((i + 1) * x) / (x*a);
+            //}
+            //Console.WriteLine(s);
+    
+    
+            //5
+            //int s = 0;
+            //int p = 2;
+            //int h = 1;
+            //s = p * p;
+            //for (int i =1; i<9; i++)
+            //{
+            //    s += (p + i * h) * (p + i * h);
+            //}
+            //Console.WriteLine(s);
+    
+    
+            //6
+            //double x;
+            //double y = 0;
+            //for (x = -4; x<=4; x+=0.5)
+            //{
+            //    y = 0.5 * (x * x) - 7 * x;
+            //    Console.WriteLine("y= " + y + " x=" + x);
+            //}
+    
+    
+            //7
+            //int f = 1;
+            //if (f != 0)
+            //{
+            //    for (int i = 1; i <= 6; i++)
+            //    {
+            //        f *= i;
+            //    }
+            //    Console.WriteLine(f);
+            //}
+    
+    
+            //8
+            //int f = 1;
+            //int k = 0;
+            //if (f != 0)
+            //{
+            //    for (int i = 1; i <= 6; i++)
+            //    {
+            //        f *= i;
+            //        k += f;
+            //    }
+            //    Console.WriteLine(k);
+            //}
+    
+    
+            //9
+            //double f = 0;
+            //double s = 0;
+            //for (int i = 1; i <= 6; i++)
+            //{
+            //    f = (-1) * f * 5 / i;
+            //    s += f;
+            //}
+            //Console.WriteLine(s);
+    
+    
+            //10
+            //int h = 3;
+            //int pow = 7;
+            //int res = 1;
+            //for (int i = 1; i<=pow; i++)
+            //{
+            //    res *= h;
+            //}
+            //Console.WriteLine(res);
+    
+    
+            //11a
+            //int s = 1;
+            //while (s < 7)
+            //{
+            //    Console.Write(s);
+            //    s++;
+            //}
+    
+            //11b
+            //int s = 5;
+            //int i = 0;
+            //for (i = 0; i < 6; i++)
+            //{
+            //    Console.Write(s);
+            //}
+    
+    
+            //12
+            //double s = 1;
+            //int x = 2;
+            //double i = 1;
+            //double a = 1;
+            //for (i = 1; i < 10; i++)
+            //{
+            //    a = a * i;
+            //    double k = 1 / (x*a);
+            //    s = s + k;
+            //}
+            //Console.WriteLine("x = 2");
+            //Console.WriteLine(s);
+    
+    
+            //13
+            //double y;
+            //double x;
+            //double h = 0.1;
+            //for (x = -1.5; x <= 1.5; x += h)
+            //{
+            //    if (x <= -1)
+            //    {
+            //        y = 1;
+            //    }
+            //    if (x <= 1 & x > -1)
+            //    {
+            //        y = -x;
+            //    }
+            //    else
+            //    {
+            //        y = -1;
+            //    }
+            //    Console.WriteLine("x=" + x + " y=" + y);
+            //}
+    
+    
+            //14
+            //int n = 8;
+            //int a1 = 1;
+            //int a2 = 1;
+            //int an;
+            //Console.Write(a1 + " " + a2 + " ");
+            //for (int i = 3; i<= n; i++)
+            //{
+            //    an = a1 + a2;
+            //    Console.Write(an + " ");
+            //    a1 = a2;
+            //    a2 = an;
+            //}
+    
+    
+            //15
+            //int n = 5;
+            //double ch = 1;
+            //double zn = 1;
+            //for (int i = 2; i < n; i++)
+            //{
+            //    double x = ch;
+            //    ch += zn;
+            //    zn = x;
+            //}
+            //Console.WriteLine($"{ch}/{zn}");
+    
+    
+    
+    
+            //2 level
+    
+            //1
+            //double s = 0;
+            //int x = 1;
+            //double a;
+            //int n = Int32.Parse(Console.ReadLine());
+            //for (int i = 1; i <= n; i++)
+            //{
+            //    a = Math.Cos(i * x) / (i * i);
+            //    s += a;
+    
+            //    if(Math.Abs(a) < 0.0001)
+            //    {
+            //        Console.WriteLine(s);
+            //    }
+            //}
+    
+    
+            //2
+            //int p = 1;
+            //int k = 1;
+            //int n = 4;
+            //for (int i = n; i > 0; i += 3)
+            //{
+            //    k = p * i;
+            //    if (k < 30000)
+            //    {
+            //        p = p * i;
+            //    }
+            //    else
+            //    {
+            //        n = i - 3;
+            //        break;
+            //    }
+            //}
+            //Console.WriteLine(n);
+    
+    
+            //3
+            //int n = 0;
+            //int s = 0;
+            //int g;
+            //const int p = 18;
+            //const int a = 1;
+            //const int h = 2;
+            //while (s < p)
+            //{
+            //    g = a + (n * h);
+            //    s += g;
+            //    n += 1;
+            //}
+            //n -= 1;
+            //Console.WriteLine(n);
+    
+    
+            //4
+            //double s = 1;
+            //double x = 0.7;
+            //double s1 = 0;
+            //for (int i = 1; i <= 10000; i++)
+            //{
+            //    double a = x;
+            //    for (int j = 1; j <= i*2 -1; i++)
+            //    {
+            //        a += x;
+            //    }
+            //    s += a;
+    
+            //    if (a>= 0.0001)
+            //    {
+            //        s1 = s;
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine(s1);
+            //    }
+            //}
+    
+    
+            //5
+            //int n = Int32.Parse(Console.ReadLine());
+            //int m = Int32.Parse(Console.ReadLine());
+            //int k = 0;
+            //while (n >= m)
+            //{
+            //    n -= m;
+            //    k++;
+            //}
+            //Console.WriteLine($"результат: {k}");
+            //Console.WriteLine($"остаток: {n}");
+    
+    
+            //6
+            //int n = 1;
+            //int t = 0;
+            //while (n < 100000)
+            //{
+            //    n += n;
+            //    t++;
+            //}
+            //Console.WriteLine(t);
+    
+    
+            //7a
+            //double s = 10.0;
+            //double s1 = 10.0;
+            //for (int i = 2; i < 8; i++)
+            //{
+            //    s = s * 1.1;
+            //    s1 = s1 + s;
+            //}
+            //Console.WriteLine($"a) {s1}");
+    
+    
+            //7b
+            //double s = 10.0;
+            //double s1 = 10.0;
+            //double sum = 0;
+            //int k = 0;
+            //for (int i = 2; i < 10; i++)
+            //{
+            //    s = s * 1.1;
+            //    s1 = s1 + s;
+            //    k++;
+            //    if (s1 >= 100)
+            //    {
+            //        Console.WriteLine(k);
+            //        break;
+    
+            //    }
+            //}
+    
+    
+            //7c
+            //double s = 10.0;
+            //double s1 = 10.0;
+            //double sum = 0;
+            //int k = 0;
+            //for (int i = 2; i < 10; i++)
+            //{
+            //    s = s * 1.1;
+            //    s1 = s1 + s;
+            //    k++;
+            //    if (s >= 20)
+            //    {
+            //        Console.WriteLine(k);
+            //        break;
+    
+            //    }
+            //}
+    
+    
+            //8
+            //double vk = 10000;
+            //int m = 0;
+            //for (m = 0; vk < 20000; m++)
+            //{
+            //    vk *= 1.08;
+            //}
+            //Console.WriteLine(m);
+    
+    
+    
+    
+            //level 3
+            //6
+            //double a = 0.1;
+            //double b = 1;
+            //double h = 0.1;
+            //double s = 0;
+    
+            //double y(double w)
+            //{
+            //    return ((1 + w * w) * Math.Tan(w)) / 2;
+            //}
+    
+            //double f(int i, double w)
+            //{
+            //    return (Math.Pow(w, 2 * i + 1)) / (4 * Math.Pow(i, 2) - 1);
+            //}
+    
+            //double x = a;
+            //while (x<= b)
+            //{
+            //    int i = 0;
+            //    double E = f(i, x);
+            //    while(Math.Abs(E) >= 0.0001)
+            //    {
+            //        s += E;
+            //        i++;
+            //        E = f(i, x);
+            //    }
+            //    Console.WriteLine("x= " + x);
+            //    Console.WriteLine("y= " + y(x));
+            //    Console.WriteLine("s= " + s);
+    
+            //    x += h;
+            //}
+               
         }
     }
 }
