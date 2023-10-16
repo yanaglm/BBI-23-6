@@ -36,24 +36,24 @@ namespace ConsoleApp1
             //Console.WriteLine(s);
     
     
-            //4
-            //int x = 30;
-            //double s = Math.Cos(x);
+             //4
+            //double x = 12;
+            //double s = 0;
             //double a = 1;
-            //for (double i = 1; i < 8; i++)
+            //for (double i = 1; i <= 9; i++)
             //{
-            //    a = a * i;
-            //    s += Math.Cos((i + 1) * x) / (x*a);
+            //    s += Math.Cos(i * x) / a;
+            //    a = a * x;
             //}
             //Console.WriteLine(s);
-    
-    
+
+
             //5
             //int s = 0;
-            //int p = 2;
+            //int p = 1;
             //int h = 1;
             //s = p * p;
-            //for (int i =1; i<9; i++)
+            //for (int i = 1; i <= 9; i++)
             //{
             //    s += (p + i * h) * (p + i * h);
             //}
@@ -97,7 +97,7 @@ namespace ConsoleApp1
     
     
             //9
-            //double f = 0;
+            //double f = 1;
             //double s = 0;
             //for (int i = 1; i <= 6; i++)
             //{
@@ -136,15 +136,13 @@ namespace ConsoleApp1
     
     
             //12
-            //double s = 1;
-            //int x = 2;
-            //double i = 1;
-            //double a = 1;
-            //for (i = 1; i < 10; i++)
+            //double s = 0;
+            //double x = 2;
+            //double a = x;
+            //for (int i = 0; i <= 10; i++)
             //{
-            //    a = a * i;
-            //    double k = 1 / (x*a);
-            //    s = s + k;
+            //    a /= x;
+            //    s += a;
             //}
             //Console.WriteLine("x = 2");
             //Console.WriteLine(s);
@@ -363,33 +361,28 @@ namespace ConsoleApp1
             //    vk *= 1.08;
             //}
             //Console.WriteLine(m);
-    
-    
-    
-    
+
+            
             //level 3
             //6
             //double a = 0.1;
             //double b = 1;
             //double h = 0.1;
             //double s = 0;
-    
             //double y(double w)
             //{
-            //    return ((1 + w * w) * Math.Tan(w)) / 2;
+            //    return ((1 + w * w) * Math.Atan(w)) / 2;
             //}
-    
             //double f(int i, double w)
             //{
-            //    return (Math.Pow(w, 2 * i + 1)) / (4 * Math.Pow(i, 2) - 1);
+            //    return (Math.Pow(-1, i+1) * Math.Pow(w, 2 * i + 1)) / (4 * Math.Pow(i, 2) - 1);
             //}
-    
             //double x = a;
-            //while (x<= b)
+            //while (x <= b)
             //{
             //    int i = 0;
             //    double E = f(i, x);
-            //    while(Math.Abs(E) >= 0.0001)
+            //    while (Math.Abs(E) >= 0.0001)
             //    {
             //        s += E;
             //        i++;
@@ -398,10 +391,9 @@ namespace ConsoleApp1
             //    Console.WriteLine("x= " + x);
             //    Console.WriteLine("y= " + y(x));
             //    Console.WriteLine("s= " + s);
-    
             //    x += h;
             //}
-               
+                   
         }
     }
 }
