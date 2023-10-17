@@ -368,30 +368,46 @@ namespace ConsoleApp1
             //double a = 0.1;
             //double b = 1;
             //double h = 0.1;
-            //double s = 0;
-            //double y(double w)
+    
+            //double pow(double r, double q)
             //{
-            //    return ((1 + w * w) * Math.Atan(w)) / 2;
-            //}
-            //double f(int i, double w)
-            //{
-            //    return (Math.Pow(-1, i+1) * Math.Pow(w, 2 * i + 1)) / (4 * Math.Pow(i, 2) - 1);
-            //}
-            //double x = a;
-            //while (x <= b)
-            //{
-            //    int i = 0;
-            //    double E = f(i, x);
-            //    while (Math.Abs(E) >= 0.0001)
+            //    double p = 1;
+            //    for (int i = 1; i <= q; i++)
             //    {
-            //        s += E;
-            //        i++;
-            //        E = f(i, x);
+            //        p = p * r;
             //    }
-            //    Console.WriteLine("x= " + x);
-            //    Console.WriteLine("y= " + y(x));
-            //    Console.WriteLine("s= " + s);
-            //    x += h;
+            //    return p;
+            //}
+    
+    
+            //double factorial(double n)
+            //{
+            //    if (n == 1 ^ n == 0)
+            //    {
+            //        return 1;
+            //    }
+            //    else return n * factorial(n - 1);
+            //}
+    
+            //double y(double n)
+            //{
+            //    return ((1+n*n)*Math.Atan(n)/2) -(n/2);
+            //}
+    
+            //for (double x = a; x <= b; x += h)
+            //{
+            //    double s = 0;
+            //    for (double i = 1; ; i++)
+            //    {
+            //        double E = pow(-1, i+1) * (pow(x, 2 * i+1) / (4*i*i - 1));
+            //        if (Math.Abs(E) < 0.0001)
+            //        {
+            //            break;
+            //        }
+            //        s += E;
+            //        Console.WriteLine($"x = {x}, s = {s}, y = {y(x)}");
+    
+            //    }
             //}
                    
         }
