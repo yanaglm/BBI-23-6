@@ -56,12 +56,23 @@ class HelloWorld
         //int c = Int32.Parse(Console.ReadLine());
         //int z;
         //int k;
-        //k = Math.Min(a, b);
-        //z = Math.Max(k, c);
+        //if(a>b)
+        //{
+        //    k = b;
+        //}
+        //else
+        //{
+        //    k = a;
+        //}
+        //if (k > c)
+        //{
+        //    z = k;
+        //}
+        //else
+        //{
+        //    z = c;
+        //}
         //Console.WriteLine($"z = {z}");
-
-
-
 
 
         //5
@@ -192,11 +203,13 @@ class HelloWorld
         //double r1 = Double.Parse(Console.ReadLine());
         //double r2 = Double.Parse(Console.ReadLine());
         //int k = 0;
-        //for (int i = 0; i < n: i++)
+        //for (int i = 0; i < n; i++)
         //{
         //    double x = Double.Parse(Console.ReadLine());
         //    double y = Double.Parse(Console.ReadLine());
-        //    if ((Math.Pow(x, 2) + Math.Pow(y, 2) >= Math.Pow(r1, 2)) & (Math.Pow(x, 2) + Math.Pow(y, 2) <= Math.Pow(r2, 2)))
+        //    double r1_2 = Math.Pow(r1, 2);
+        //    double r2_2 = Math.Pow(r2, 2);
+        //    if ((Math.Pow(x, 2) + Math.Pow(y, 2) >= r1_2) & (Math.Pow(x, 2) + Math.Pow(y, 2) <= r2_2))
         //    {
         //        k++;
         //    }
@@ -275,29 +288,27 @@ class HelloWorld
 
 
         //8
-        int n = Int32.Parse(Console.ReadLine());
-        double min_dist = 0;
-        double max_dist = 0;
-        int k = 0;
-        for (int i = 1; i <= n; i++)
-        {
-            int x = Int32.Parse(Console.ReadLine());
-            int y = Int32.Parse(Console.ReadLine());
-            double dist = Math.Sqrt(x * x + y * y);
-            if (dist > min_dist)
-            {
-                max_dist = dist;
-                k = i;
-            }
-            if (dist < min_dist)
-            {
-                max_dist = min_dist;
-                k = i;
-            }
-            
-        }
-        Console.WriteLine(max_dist);
+        //Console.Write("number of points ");
+        //int n = Int32.Parse(Console.ReadLine());
+        //double min_dist = double.MaxValue;
+        //int k = -1;
+        //for (int i = 1; i <= n; i++)
+        //{
+        //    Console.Write("x = ");
+        //    int x = Int32.Parse(Console.ReadLine());
+        //    Console.Write("y = ");
+        //    int y = Int32.Parse(Console.ReadLine());
+        //    double dist = Math.Sqrt(x * x + y * y);
+        //    if (dist < min_dist)
+        //    {
+        //        min_dist = dist;
+        //        k = i;
+        //    }
+        //}
+        //Console.WriteLine($"the nearest {k}");
+        //Console.WriteLine($"distance {min_dist}");
 
+        
         //9
         //int n = Int32.Parse(Console.ReadLine());
         //int best = 0;
