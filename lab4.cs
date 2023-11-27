@@ -15,17 +15,6 @@ class HelloWorld
         //Console.WriteLine("sled= " + sled);
 
 
-        //just example
-        //int[,] a = { { 1, 2, 3 }, { 4,5,6} };
-        //for(int i = 0; i < 2; i++)
-        //{
-        //    for(int j = 0; j < 3; j++)
-        //    {
-        //        Console.Write($"{a[i, j]} \t");
-        //    }
-        //    Console.WriteLine();
-        //}
-
 
         //7
         //int[,] a = new int[5, 7] { { 2, 3, 4, 18, 1, 6, 7 }, { 9, 10, 11, 5, 4, 8, 3 }, {6,4,3,8,5,9,11 }, {9,4,7,3,1,15,6},{ 2,8,4,9,13,7,6 } };
