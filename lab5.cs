@@ -21,7 +21,7 @@ class Program
     //    return max;
     //}
 
-    
+
     //static void changeelem(ref int [,] a, ref int[,] b)
     //{
     //    int amax = maxelem(a);
@@ -97,84 +97,292 @@ class Program
 
 
     //7
-    //public static void PasteColAfterRowWithMaxPos(int[,] b, int[,] c)
+
+    static int MaxPosRow(int[,] mat)
+    {
+        int k_maxpos = 0;
+        int maxposrow_ind = -1;
+
+        for (int i = 0; i < mat.GetLength(0); i++)
+        {
+            int k_pos = 0;
+            for (int j = 0; j < mat.GetLength(1); j++)
+            {
+                if (mat[i, j] > 0)
+                {
+                    k_pos++;
+                }
+            }
+            if (k_pos > k_maxpos)
+            {
+                k_maxpos = k_pos;
+                maxposrow_ind = i;
+            }
+        }
+
+        return maxposrow_ind;
+    }
+
+    static int MaxPosColumn(int[,] mat)
+    {
+        int k_maxpos = 0;
+        int maxposcolumn_ind = -1;
+
+        for (int j = 0; j < mat.GetLength(1); j++)
+        {
+            int k_pos = 0;
+            for (int i = 0; i < mat.GetLength(0); i++)
+            {
+                if (mat[i, j] > 0)
+                {
+                    k_pos++;
+                }
+            }
+            if (k_pos > k_maxpos)
+            {
+                k_maxpos = k_pos;
+                maxposcolumn_ind = j;
+            }
+        }
+        return maxposcolumn_ind;
+    }
+
+    static int[,] PasteColAfterRowWithMaxPos(int[,] b, int[,] c, int row_ind, int column_ind)
+    {
+        //int maxposrow_ind = MaxPosRow(b);
+        int[,] new_mat = new int[5, 5];
+        int[] d = new int[5];
+        for (int i = 0; i < c.GetLength(0); i++)
+        { 
+            d[i] = c[i, column_ind];
+        }
+        for (int i = 0; i <= row_ind; i++) {
+            for (int j = 0; j < 5; j++)
+            {
+                if (i == row_ind + 1)
+                {
+                    new_mat[i, j] = d[j];
+                }
+                else
+                {
+                    new_mat[i, j] = b[i, j];
+                }
+            }
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            new_mat[row_ind + 1, i] = d[i];
+        }
+        int v = row_ind + 1;
+        for (int i = row_ind + 2; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                new_mat[i, j] = b[v, j];
+            }
+            v += 1;
+        }
+
+        return new_mat;
+
+        
+    }
+  
+
+    static void PrintMat(int[,] mat)
+    {
+        //Console.WriteLine("new mat");
+        for (int i = 0; i < mat.GetLength(0); i++)
+        {
+            for (int j = 0; j < mat.GetLength(1); j++)
+            {
+                Console.Write($"{mat[i, j]} \t");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    static void Main()
+    {
+
+        int[,] b = new int[4, 5] { { 6, -4, 5, 1, 5 }, { 8, 7, -3, -5, 7 }, { 3, 9, 4, 2, 1 }, { -7, -3, -5, 8, 5 } };
+        int[,] c = new int[5, 6] { { 3, 6, -9, 2, 1, 4 }, { 8, -6, -3, -7, 5, 2 }, { 2, 4, -1, -5, 9, 6 }, { 5, 3, -1, 7, 2, 9 }, { 5, -4, 7, -2, 6, 9 } };
+        Console.WriteLine("mat b");
+        PrintMat(b);
+        Console.WriteLine("mat c");
+        PrintMat(c);
+        int row_max_ind = MaxPosRow(b);
+        int column_max_ind = MaxPosColumn(c);
+        //PasteColAfterRowWithMaxPos(b, c,row_max, column_max);
+        if (row_max_ind != -1 && column_max_ind != -1)
+        {
+            int[,] v = new int[5, 5];
+            v = PasteColAfterRowWithMaxPos(b, c, row_max_ind, column_max_ind);
+            Console.WriteLine("result");
+            PrintMat(v);
+        }
+        else
+        {
+            Console.WriteLine("no way");
+        }
+    }
+
+
+
+    //static void Main(string[] args)
     //{
-    //    int maxpospow_ind = MaxPosRow(b);
-    //    int[,] new_mat = new int[b.GetLength(0), b.GetLength(1) + 1];
+    //    int[,] b = new int[4, 5] { { 1, -2, 3, 4, 5 }, { -1, 2, -3, 4, -5 }, { -1, -2, -3, -4, -5 }, { 1, 2, 3, 4, 5 } };
+    //    int[,] c = new int[5, 6] { { 1, 2, 3, 4, 5, -6 }, { -1, 2, -3, 4, -5, 6 }, { -1, -2, -3, -4, -5, -6 }, { 1, 2, 3, 4, 5, 6 }, { 1, 2, 3, 4, 5, 6 } };
 
-    //    for (int i = 0; i < b.GetLength(0); i++)
+    //    // Find the row with the maximum number of positive elements in matrixA
+    //    int row_max = FindMaxPositiveRow(b);
+
+    //    // Find the column with the maximum number of positive elements in matrixB
+    //    int column_max = FindMaxPositiveColumn(c);
+
+    //    // Create a new matrixC with the desired dimensions
+    //    int[,] A = new int[4, 6];
+
+    //    // Copy elements from matrixA to matrixC
+    //    for (int i = 0; i < 4; i++)
     //    {
-    //        for (int j = 0; j < b.GetLength(1); j++)
+    //        for (int j = 0; j < 5; j++)
     //        {
-    //            new_mat[i, j] = b[i, j];
+    //            A[i, j] = b[i, j];
+    //        }
+    //    }
 
-    //            if (i == maxpospow_ind)
+    //    // Insert the column from matrixB after the row with the maximum number of positive elements
+    //    for (int i = 0; i < 4; i++)
+    //    {
+    //        for (int j = 0; j < 6; j++)
+    //        {
+    //            if (j < column_max )
     //            {
-    //                new_mat[i, j + 1] = c[i, j];
+    //                A[i, j + 5] = c[i, j];
+    //            }
+    //            else if (j == column_max )
+    //            {
+    //                A[i, j + 5] = b[i, j];
+    //            }
+    //            else
+    //            {
+    //                A[i, j + 5] = c[i, j - 1];
     //            }
     //        }
     //    }
 
-    //    PrintMat(new_mat);
-    //}
-
-    //private static int MaxPosRow(int[,] mat)
-    //{
-    //    int k_maxpos = 0;
-    //    int maxpospow_ind = -1;
-
-    //    for (int i = 0; i < mat.GetLength(0); i++)
+    //    // Print the resulting matrixC
+    //    for (int i = 0; i < 4; i++)
     //    {
-    //        int k_pos = Get_k_pos(mat, i);
-
-    //        if (k_pos > k_maxpos)
+    //        for (int j = 0; j < 6; j++)
     //        {
-    //            k_maxpos = k_pos;
-    //            maxpospow_ind = i;
-    //        }
-    //    }
-
-    //    return maxpospow_ind;
-    //}
-
-    //private static int Get_k_pos(int[,] mat, int row_ind)
-    //{
-    //    int k_pos = 0;
-
-    //    for (int j = 0; j < mat.GetLength(1); j++)
-    //    {
-    //        if (mat[row_ind, j] > 0)
-    //        {
-    //            k_pos++;
-    //        }
-    //    }
-
-    //    return k_pos;
-    //}
-
-    //private static void PrintMat(int[,] mat)
-    //{
-    //    Console.WriteLine("new mat");
-    //    for (int i = 0; i < mat.GetLength(0); i++)
-    //    {
-    //        for (int j = 0; j < mat.GetLength(1); j++)
-    //        {
-    //            Console.Write($"{mat[i, j]} \t");
+    //            Console.Write(A[i, j] + " ");
     //        }
     //        Console.WriteLine();
     //    }
     //}
 
-    //public static void Main()
+    //static int FindMaxPositiveRow(int[,] matrix)
     //{
-    //    int[,] b = new int[4,4] {{ 6,-4,5,1}, { 8,7,-3,-5 },{3,9,4,2}, { -7,-3,-5,8 } };
-    //    int[,] c = { { 3, 6, -9, 2 }, { 8, -6, -3, -7 }, { 2, 4, -1, -5 }, { 5, 3, -1, 7 } };
-    //    PasteColAfterRowWithMaxPos(b, c);
+    //    int maxPositiveCount = 0;
+    //    int maxPositiveRow = 0;
+
+    //    for (int i = 0; i < matrix.GetLength(0); i++)
+    //    {
+    //        int positiveCount = 0;
+
+    //        for (int j = 0; j < matrix.GetLength(1); j++)
+    //        {
+    //            if (matrix[i, j] > 0)
+    //            {
+    //                positiveCount++;
+    //            }
+    //        }
+
+    //        if (positiveCount > maxPositiveCount)
+    //        {
+    //            maxPositiveCount = positiveCount;
+    //            maxPositiveRow = i;
+    //        }
+    //    }
+
+    //    return maxPositiveRow;
+    //}
+
+    //static int FindMaxPositiveColumn(int[,] matrix)
+    //{
+    //    int maxPositiveCount = 0;
+    //    int maxPositiveColumn = 0;
+
+    //    for (int j = 0; j < matrix.GetLength(1); j++)
+    //    {
+    //        int positiveCount = 0;
+
+    //        for (int i = 0; i < matrix.GetLength(0); i++)
+    //        {
+    //            if (matrix[i, j] > 0)
+    //            {
+    //                positiveCount++;
+    //            }
+    //        }
+
+    //        if (positiveCount > maxPositiveCount)
+    //        {
+    //            maxPositiveCount = positiveCount;
+    //            maxPositiveColumn = j;
+    //        }
+    //    }
+
+    //    return maxPositiveColumn;
     //}
 
 
 
+
+
+
+
+
+
+
+
+
+
     //13
+   
+
+    //static void PrintMatrix(int[,] mat)
+    //{
+    //    for (int i = 0; i < mat.GetLength(0); i++)
+    //    {
+    //        for (int j = 0; j < mat.GetLength(1); j++)
+    //        {
+    //            Console.Write(mat[i, j] + "\t");
+    //        }
+
+    //        Console.WriteLine();
+    //    }
+    //}
+
+    //static void Main()
+    //{
+    //    int[,] mat_a = new int[4, 3] { { 14, 8, -12 }, { 1, 6, 3 }, { 9, 5, 7 }, { 5, 7, 3 } };
+
+    //    Console.WriteLine("original");
+    //    PrintMatrix(mat_a);
+
+    //    int maxRow = FindMaxRow(mat_a);
+    //    int minRow = FindMinRow(mat_a);
+        
+
+    //    int[,] finishMat = RemoveRows(mat_a, maxRow, minRow);
+
+    //    Console.WriteLine("finish");
+    //    PrintMatrix(finishMat);
+    //}
+
+
     //static int FindMaxRow(int[,] mat)
     //{
     //    int maxRow = 0;
@@ -217,7 +425,7 @@ class Program
 
     //static int[,] RemoveRows(int[,] mat, int maxRow, int minRow)
     //{
-    //    int rows = mat.GetLength(0) - 2; 
+    //    int rows = mat.GetLength(0) - 2;
     //    int columns = mat.GetLength(1);
     //    int[,] newMat = new int[rows, columns];
 
@@ -225,7 +433,7 @@ class Program
 
     //    for (int i = 0; i < mat.GetLength(0); i++)
     //    {
-    //        if (i != maxRow && i != minRow)
+    //        if (i != maxRow && i != minRow && maxRow != minRow)
     //        {
     //            for (int j = 0; j < mat.GetLength(1); j++)
     //            {
@@ -254,10 +462,10 @@ class Program
 
     //static void Main()
     //{
-    //    int[,] mat_a = new int [4,3] { { 4,8,2 }, { 1,6,3 }, { 9,5,7 }, { 5,7,3} };
+    //    int[,] mat_a = new int[4, 3] { { 14, 8, -12 }, { 1, 6, 3 }, { 9, 5, 7 }, { 5, 7, 3 } };
 
     //    Console.WriteLine("original");
-    //    PrintMatrix(mat_a );
+    //    PrintMatrix(mat_a);
 
     //    int maxRow = FindMaxRow(mat_a);
     //    int minRow = FindMinRow(mat_a);
@@ -267,7 +475,6 @@ class Program
     //    Console.WriteLine("finish");
     //    PrintMatrix(finishMat);
     //}
-
 
 
     //19
