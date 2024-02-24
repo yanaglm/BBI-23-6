@@ -13,27 +13,54 @@ using System.Linq;
 заголовком в порядке занятых мест.
 */
 /*
-class Competitors
+struct Results
 {
-    public string Surname
+    private List<Competitor> competitors;
+
+    public void Result()
     {
-        get;
-        set;
+        competitors = new List<Competitor>();
     }
-    public string Community
+
+    public void NewCompetitor(string surname, string community, double first_attempt, double second_attempt)
     {
-        get;
-        set;
+        Competitor new_member = new Competitor(surname, community, first_attempt, second_attempt);
+        competitors.Add(new_member);
     }
-    public double FirstAttempt
+
+    public void PrintResult()
     {
-        get;
-        set;
+        var sortedCompetitors = competitors.OrderByDescending(a => a.Total_result).ToList();
+        Console.WriteLine("result");
+        Console.WriteLine("------------------------------------");
+        Console.WriteLine("| ranking   | surname  | community   | final result |");
+        Console.WriteLine("------------------------------------");
+        int ranking = 1;
+        foreach (var competitor in sortedCompetitors)
+        {
+            Console.WriteLine($"| {ranking,-10}| {competitor.Surname,-8} |  {competitor.Community,-10} | {competitor.Total_result,-12} | ");
+            ranking++;
+
+        }
+        Console.WriteLine("------------------------------------");
     }
-    public double SecondAttempt
+}
+
+struct Competitor
+{
+    public string Surname { get; }
+    public string Community { get; }
+    public double First_atttempt { get; }
+    public double Second_atttempt { get; }
+    public double Total_result => First_atttempt + Second_atttempt;
+    
+
+    public Competitor(string surname, string community, double first_attempt, double second_attempt)
     {
-        get;
-        set;
+        Surname = surname;
+        Community = community;
+        First_atttempt = first_attempt;
+        Second_atttempt = second_attempt;
     }
 }
 
@@ -41,36 +68,17 @@ class Program
 {
     static void Main()
     {
-        // Создаем список участников
-        List<Competitors> competitors = new List<Competitors>
-        {
-            new Competitors
-            {
-                Surname = "petrov", Community = "club 1", FirstAttempt = 8.2, SecondAttempt = 6.8
-            },
-            new Competitors
-            {
-                Surname = "smirnov", Community = "club 2", FirstAttempt = 6.3, SecondAttempt = 7.2
-            },
-            new Competitors
-            {
-                Surname = "zaitsev", Community = "club 3", FirstAttempt = 7.5, SecondAttempt = 8.7
-            }
-        };
+        Results result = new Results();
+        result.Result();
 
-        // Сортируем участников по результатам
-        var sortedCompetitors = competitors.OrderBy(c => Math.Max(c.FirstAttempt, c.SecondAttempt)).ToList();
+        result.NewCompetitor("petrov", "club 1", 8.2, 6.8);
+        result.NewCompetitor("smirnov", "club 2", 6.3, 7.2);
+        result.NewCompetitor("zaitsev", "club 3", 7.5, 8.7);
 
-        // Выводим таблицу протокола соревнований
-        Console.WriteLine("results");
-        Console.WriteLine("------------------------------------");
-        Console.WriteLine("| surname  | community   | first attempt | second attempt |");
-        Console.WriteLine("------------------------------------");
-        foreach (var competitor in sortedCompetitors)
-        {
-            Console.WriteLine($"| {competitor.Surname,-8} | {competitor.Community,-11} | {competitor.FirstAttempt,-13} | {competitor.SecondAttempt,-14} |");
-        }
-        Console.WriteLine("------------------------------------");
+        result.PrintResult();
+
+
+       
     }
 }
 */
@@ -87,63 +95,60 @@ class Program
 мест по результатам 2 прыжков.
 */
 /*
-class Competitors
+struct Competitors
 {
-    public string Surname
+    private Dictionary<string, List<double>> scores;
+
+    public void KeepingScores()
     {
-        get;
-        set;
+        scores = new Dictionary<string, List<double>>();
     }
 
-    public List<double> Score_firstattempt
+    public void NewScores(string surname, List<double> score_firstattempt, List<double> score_secondattempt)
     {
-        get;
-        set;
-    }
-    public List<double> Score_secondattempt
-    {
-        get;
-        set;
+        List<double> final_scores = new List<double>();
+        for(int i = 0; i< 5; i++)
+        {
+            final_scores.Add(score_firstattempt[i] + score_secondattempt[i] / 2);
+
+        }
+        scores.Add(surname, final_scores);
     }
 
-    public double GetResult()
+    public void PrintResults()
     {
-        var totalScore = Score_firstattempt.Average() + Score_secondattempt.Average();
-        return Math.Round(totalScore, 2);
+        var sorted_scores = scores.OrderByDescending(a => a.Value.Sum()).ToList();
+        Console.WriteLine("final scores");
+        int ranking = 1;
+        foreach (var competitor in sorted_scores)
+        {
+            Console.WriteLine($"ranking {ranking}: {competitor.Key}, final score: {competitor.Value.Sum()}");
+            ranking++;
+
+        }
+
     }
+    
+
+   
 
 }
+
 class Program
 {
     static void Main()
     {
-        List<Competitors> competitors = new List<Competitors>
-        {
-            new Competitors
-            {
-                Surname = "petrov", Score_firstattempt = new List<double> {6.5, 7.0, 6.0, 8.0, 7.5}, Score_secondattempt = new List<double> {8.0, 8.5, 7.5, 8.5, 9.0}
-            },
-            new Competitors
-            {
-                Surname = "smirnov", Score_firstattempt = new List<double> {6.5, 5.5, 6.0, 5.0, 7.0}, Score_secondattempt = new List<double> {7.5, 8.0, 7.5, 7.0, 7.0}
-            },
-            new Competitors
-            {
-                Surname = "zaitsev", Score_firstattempt = new List<double> { 9.5, 9.0, 10.0, 9.5, 9.5 }, Score_secondattempt = new List<double> { 8.5, 8.0, 9.0, 8.5, 9.5 }
-            }
-        };
+        Competitors result = new Competitors();
 
-        var sort_competitors = competitors.OrderBy(d => d.GetResult()).ToList();
+        result.KeepingScores();
 
-        Console.WriteLine("result");
-        Console.WriteLine("---------------------------");
-        Console.WriteLine("| surname   | final result   |");
-        Console.WriteLine("---------------------------");
-        foreach(var competitor in sort_competitors)
-        {
-            Console.WriteLine($"| {competitor.Surname,-9} | {competitor.GetResult(),-14} |");
-        }
-        Console.WriteLine("---------------------------");
+        result.NewScores("petrov", new List<double> { 6.5, 7.0, 6.0, 8.0, 7.5 }, new List<double> { 8.0, 8.5, 7.5, 8.5, 9.0 });
+        result.NewScores("smirnov", new List<double> { 6.5, 5.5, 6.0, 5.0, 7.0 }, new List<double> { 7.5, 8.0, 7.5, 7.0, 7.0 });
+        result.NewScores("zaitsev", new List<double> { 9.5, 9.0, 10.0, 9.5, 9.5 }, new List<double> { 8.5, 8.0, 9.0, 8.5, 9.5 });
+
+        result.PrintResults();
+
+       
     }
 }
 */
@@ -163,13 +168,13 @@ class Program
 ответов на некоторые вопросы.
  */
 /*
-class Response
+struct Response
 {
-    public Dictionary<string, int> Japan_Animal { get; set; }
-    public Dictionary<string, int> Japan_TraitOfCharacter { get; set; }
-    public Dictionary<string, int> Japan_Object { get; set; }
+    private Dictionary<string, int> Japan_Animal;
+    private Dictionary<string, int> Japan_TraitOfCharacter;
+    private Dictionary<string, int> Japan_Object;
 
-    public Response()
+    public void Responses()
     {
         Japan_Animal = new Dictionary<string, int>();
         Japan_TraitOfCharacter = new Dictionary<string, int>();
@@ -212,11 +217,23 @@ class Response
         }
     }
 
-    public void PrintTopResponses(int k, Dictionary<string, int> responses)
+    public void PrintTopResponses()
+    {
+        Console.WriteLine("animal results");
+        PrintTopResponsesForAllQuestions(Japan_Animal);
+
+        Console.WriteLine("traits of character results");
+        PrintTopResponsesForAllQuestions(Japan_TraitOfCharacter);
+
+        Console.WriteLine("objects results");
+        PrintTopResponsesForAllQuestions(Japan_Object);
+    }
+
+    public void PrintTopResponsesForAllQuestions(Dictionary<string, int> responses)
     {
         var allResponses = responses.Sum(a => a.Value);
-        var TopResponses = responses.OrderByDescending(a => a.Value).Take(k);
-        Console.WriteLine("top responses");
+        var TopResponses = responses.OrderByDescending(a => a.Value).Take(5);
+
         foreach (var response in TopResponses)
         {
             double percent = (double)response.Value / allResponses * 100;
@@ -229,6 +246,8 @@ class Program
     static void Main()
     {
         Response radio_response = new Response();
+        radio_response.Responses();
+
         radio_response.NewAnimalResponse("cat");
         radio_response.NewAnimalResponse("cat");
         radio_response.NewAnimalResponse("panda");
@@ -241,14 +260,7 @@ class Program
         radio_response.NewObjectResponse("sunrise");
         radio_response.NewObjectResponse("sakura");
 
-        Console.WriteLine("animal results");
-        radio_response.PrintTopResponses(5, radio_response.Japan_Animal);
-
-        Console.WriteLine("traits of character results");
-        radio_response.PrintTopResponses(5, radio_response.Japan_TraitOfCharacter);
-
-        Console.WriteLine("objects results");
-        radio_response.PrintTopResponses(5, radio_response.Japan_Object);
+        radio_response.PrintTopResponses();
     }
 }
 */
