@@ -276,7 +276,7 @@ class Program
 
 //level 3
 //num 6
-/*
+
 class Response
 {
     private string[] Animal;
@@ -285,6 +285,8 @@ class Response
     private int[] AnimalCount;
     private int[] TraitOfCharacterCount;
     private int[] ObjectCount;
+
+    private static int quantity_of_responses = 0;
 
     public Response()
     {
@@ -298,6 +300,8 @@ class Response
 
     public void NewAnimalResponse(string response)
     {
+        quantity_of_responses++;
+
         for (int i = 0; i < Animal.Length; i++)
         {
             if (Animal[i] == null)
@@ -316,6 +320,8 @@ class Response
 
     public void NewTraitOfCharacterResponse(string response)
     {
+        quantity_of_responses++;
+
         for (int i = 0; i < TraitOfCharacter.Length; i++)
         {
             if (TraitOfCharacter[i] == null)
@@ -334,6 +340,8 @@ class Response
 
     public void NewObjectResponse(string response)
     {
+        quantity_of_responses++;
+
         for (int i = 0; i < Object.Length; i++)
         {
             if (Object[i] == null)
@@ -385,6 +393,11 @@ class Response
             double percent = (double)counts[i] / (counts[0] + counts[1] + counts[2] + counts[3] + counts[4]) * 100;
             Console.WriteLine($"responses: {responses[i]}, count: {counts[i]}, percent: {percent}%");
         }
+    }
+
+    public static int GetFinalQuantity()
+    {
+        return quantity_of_responses;
     }
 }
 
@@ -514,57 +527,7 @@ class Program
         Console.WriteLine("Japan");
         japan.PrintTopResponses();
 
-
-
-        Combined combined = new Combined();
-
-        combined.NewAnimalResponse("cat");
-        combined.NewAnimalResponse("cat");
-        combined.NewAnimalResponse("bear");
-        combined.NewAnimalResponse("dog");
-        combined.NewAnimalResponse("bird");
-        combined.NewAnimalResponse("bear");
-        combined.NewAnimalResponse("wolf");
-        combined.NewAnimalResponse("bear");
-        combined.NewAnimalResponse("dog");
-        combined.NewAnimalResponse("bird");
-        combined.NewAnimalResponse("red panda");
-        combined.NewAnimalResponse("panda");
-        combined.NewAnimalResponse("panda");
-        combined.NewAnimalResponse("panda");
-        combined.NewAnimalResponse("dog");
-        combined.NewAnimalResponse("cat");
-
-
-        combined.NewTraitOfCharacterResponse("kindness");
-        combined.NewTraitOfCharacterResponse("creativity");
-        combined.NewTraitOfCharacterResponse("creativity");
-        combined.NewTraitOfCharacterResponse("kindness");
-        combined.NewTraitOfCharacterResponse("politeness");
-        combined.NewTraitOfCharacterResponse("sense of humour");
-        combined.NewTraitOfCharacterResponse("sense of humour");
-        combined.NewTraitOfCharacterResponse("responsibility");
-        combined.NewTraitOfCharacterResponse("kindness");
-        combined.NewTraitOfCharacterResponse("creativity");
-        combined.NewTraitOfCharacterResponse("politeness");
-        combined.NewTraitOfCharacterResponse("sense of humour");
-        combined.NewTraitOfCharacterResponse("responsibility");
-
-
-        combined.NewObjectResponse("nature");
-        combined.NewObjectResponse("food");
-        combined.NewObjectResponse("flowers");
-        combined.NewObjectResponse("buildings");
-        combined.NewObjectResponse("sun");
-        combined.NewObjectResponse("sakura");
-        combined.NewObjectResponse("sunrise");
-        combined.NewObjectResponse("sun");
-        combined.NewObjectResponse("food");
-        combined.NewObjectResponse("technologies");
-
         Console.WriteLine(" ");
-        Console.WriteLine("all countries");
-        combined.PrintTopResponses();
+        Console.WriteLine($"final quantity of responses: {Response.GetFinalQuantity()}");
     }
 }
-*/
