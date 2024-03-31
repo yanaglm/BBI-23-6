@@ -279,14 +279,13 @@ class Program
 
 class Response
 {
-    private string[] Animal;
-    private string[]TraitOfCharacter;
-    private string[] Object;
+    public string[] Animal;
+    public string[]TraitOfCharacter;
+    public string[] Object;
     private int[] AnimalCount;
     private int[] TraitOfCharacterCount;
     private int[] ObjectCount;
 
-    private static int quantity_of_responses = 0;
 
     public Response()
     {
@@ -300,7 +299,6 @@ class Response
 
     public void NewAnimalResponse(string response)
     {
-        quantity_of_responses++;
 
         for (int i = 0; i < Animal.Length; i++)
         {
@@ -320,7 +318,6 @@ class Response
 
     public void NewTraitOfCharacterResponse(string response)
     {
-        quantity_of_responses++;
 
         for (int i = 0; i < TraitOfCharacter.Length; i++)
         {
@@ -340,7 +337,6 @@ class Response
 
     public void NewObjectResponse(string response)
     {
-        quantity_of_responses++;
 
         for (int i = 0; i < Object.Length; i++)
         {
@@ -355,6 +351,16 @@ class Response
                 ObjectCount[i]++;
                 break;
             }
+        }
+    }
+
+    public void Responeses(string response)
+    {
+        string[] responses = new string[25];
+        for (int i =0; i < 25; i++)
+        {
+            responses[i] = Animal[i];
+
         }
     }
 
@@ -393,17 +399,83 @@ class Response
             double percent = (double)counts[i] / (counts[0] + counts[1] + counts[2] + counts[3] + counts[4]) * 100;
             Console.WriteLine($"responses: {responses[i]}, count: {counts[i]}, percent: {percent}%");
         }
+
     }
 
-    public static int GetFinalQuantity()
+    public string[] GetAllResponses()
     {
-        return quantity_of_responses;
+        string[] allResponses = new string[30];
+        int index = 0;
+
+        index = AddResponsesToArray(Animal, allResponses, index);
+        index = AddResponsesToArray(TraitOfCharacter, allResponses, index);
+        index = AddResponsesToArray(Object, allResponses, index);
+
+        string[] result = new string[index];
+        Array.Copy(allResponses, result, index);
+
+        return result;
+    }
+
+    private int AddResponsesToArray(string[] source, string[] destination, int index)
+    {
+        foreach (var response in source)
+        {
+            if (!string.IsNullOrEmpty(response))
+            {
+                destination[index] = response;
+                index++;
+            }
+        }
+        return index;
+    }
+
+    public void BubbleSort(string[] array)
+    {
+        int n = array.Length;
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = 0; j < n - i - 1; j++)
+            {
+                if (array[j].CompareTo(array[j + 1]) > 0)
+                {
+                    string temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    public string[] GetTopResponses()
+    {
+        string[] allResponses = GetAllResponses();
+
+        BubbleSort(allResponses);
+
+        string[] topResponses = new string[5];
+        Array.Copy(allResponses, topResponses, 5);
+
+        return topResponses;
+    }
+
+    private int GetCount(string[] responses, string response)
+    {
+        int count = 0;
+        foreach (var r in responses)
+        {
+            if (r == response)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 }
 
 class Country
 {
-    protected Response country_response;
+    public Response country_response;
 
     public Country()
     {
@@ -472,11 +544,8 @@ class Program
     {
         Russia russia = new Russia();
 
-        russia.NewAnimalResponse("cat");
-        russia.NewAnimalResponse("cat");
         russia.NewAnimalResponse("bear");
         russia.NewAnimalResponse("dog");
-        russia.NewAnimalResponse("bird");
         russia.NewAnimalResponse("bear");
         russia.NewAnimalResponse("wolf");
         russia.NewAnimalResponse("bear");
@@ -487,8 +556,6 @@ class Program
         russia.NewTraitOfCharacterResponse("kindness");
         russia.NewTraitOfCharacterResponse("politeness");
         russia.NewTraitOfCharacterResponse("sense of humour");
-        russia.NewTraitOfCharacterResponse("sense of humour");
-        russia.NewTraitOfCharacterResponse("responsibility");
 
         russia.NewObjectResponse("nature");
         russia.NewObjectResponse("food");
@@ -503,16 +570,13 @@ class Program
         japan.NewAnimalResponse("bird");
         japan.NewAnimalResponse("red panda");
         japan.NewAnimalResponse("panda");
-        japan.NewAnimalResponse("panda");
-        japan.NewAnimalResponse("panda");
-        japan.NewAnimalResponse("dog");
-        japan.NewAnimalResponse("cat");
+        
 
         japan.NewTraitOfCharacterResponse("kindness");
         japan.NewTraitOfCharacterResponse("creativity");
         japan.NewTraitOfCharacterResponse("politeness");
         japan.NewTraitOfCharacterResponse("sense of humour");
-        japan.NewTraitOfCharacterResponse("responsibility");
+
 
         japan.NewObjectResponse("sakura");
         japan.NewObjectResponse("sunrise");
@@ -528,6 +592,26 @@ class Program
         japan.PrintTopResponses();
 
         Console.WriteLine(" ");
-        Console.WriteLine($"final quantity of responses: {Response.GetFinalQuantity()}");
+        Console.WriteLine("Top responses from both countries:");
+        string[] allResponses = new string[50];
+        int index = 0;
+
+        foreach (var response in russia.country_response.GetAllResponses())
+        {
+            allResponses[index] = response;
+            index++;
+        }
+
+        foreach (var response in japan.country_response.GetAllResponses())
+        {
+            allResponses[index] = response;
+            index++;
+        }
+
+        var topResponses = russia.country_response.GetTopResponses();
+        foreach (var response in topResponses)
+        {
+            Console.WriteLine(response);
+        }
     }
 }
