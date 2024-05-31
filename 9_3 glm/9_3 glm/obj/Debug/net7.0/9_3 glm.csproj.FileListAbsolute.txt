@@ -1,0 +1,18 @@
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/bin/Debug/net7.0/9_3 glm
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/bin/Debug/net7.0/9_3 glm.deps.json
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/bin/Debug/net7.0/9_3 glm.runtimeconfig.json
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/bin/Debug/net7.0/9_3 glm.dll
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/bin/Debug/net7.0/9_3 glm.pdb
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/bin/Debug/net7.0/protobuf-net.dll
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/bin/Debug/net7.0/protobuf-net.Core.dll
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/obj/Debug/net7.0/9_3 glm.csproj.AssemblyReference.cache
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/obj/Debug/net7.0/9_3 glm.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/obj/Debug/net7.0/9_3 glm.AssemblyInfoInputs.cache
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/obj/Debug/net7.0/9_3 glm.AssemblyInfo.cs
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/obj/Debug/net7.0/9_3 glm.csproj.CoreCompileInputs.cache
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/obj/Debug/net7.0/9_3 glm.csproj.CopyComplete
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/obj/Debug/net7.0/9_3 glm.dll
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/obj/Debug/net7.0/refint/9_3 glm.dll
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/obj/Debug/net7.0/9_3 glm.pdb
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/obj/Debug/net7.0/9_3 glm.genruntimeconfig.cache
+/Users/mshablygin/Projects/Lab9 Яна/9_3 glm/9_3 glm/obj/Debug/net7.0/ref/9_3 glm.dll
